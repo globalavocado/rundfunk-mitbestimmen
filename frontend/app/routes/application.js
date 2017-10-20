@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import ENV from 'frontend/config/environment';
 // app/routes/application.js
-import ApplicationRouteMixin from 'ember-simple-auth-auth0/mixins/application-route-mixin';
 
-export default Ember.Route.extend(ApplicationRouteMixin , {
+export default Ember.Route.extend({
   intl: Ember.inject.service(),
+  session: Ember.inject.service(),
   routeAfterAuthentication: 'authentication.callback', // for testing environment
   beforeModel() {
     // define the app's runtime locale
@@ -58,7 +58,7 @@ export default Ember.Route.extend(ApplicationRouteMixin , {
         },
         socialBigButtons: false,
         responseType: 'token',
-        callbackURL: window.location.origin + '/authentication/callback'
+        callbackURL: 'http://localhost:4200/authentication/callback'
       };
       this.get('session').authenticate(ENV.APP.authenticator, 'socialOrMagiclink', lockOptions);
     },
@@ -70,7 +70,5 @@ export default Ember.Route.extend(ApplicationRouteMixin , {
 });
 
 function calculateLocale(){
-  const locale = navigator.language || navigator.userLanguage || 'en';
-  const lang = locale.split('-')[0];
-  return ['de', 'en'].includes(lang) ? lang : 'en';
+  return 'en'
 }
