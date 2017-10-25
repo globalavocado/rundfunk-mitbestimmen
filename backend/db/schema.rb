@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025214229) do
+ActiveRecord::Schema.define(version: 20171025223456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20171025214229) do
   create_table "impressions", id: :serial, force: :cascade do |t|
     t.integer "response", default: 0
     t.decimal "amount"
-    t.integer "user_id"
-    t.integer "broadcast_id"
+    t.integer "user_id", null: false
+    t.integer "broadcast_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "fixed"
@@ -151,6 +151,8 @@ ActiveRecord::Schema.define(version: 20171025214229) do
   add_foreign_key "broadcasts", "topics"
   add_foreign_key "broadcasts", "users", column: "creator_id"
   add_foreign_key "impressions", "broadcasts"
+  add_foreign_key "impressions", "broadcasts"
+  add_foreign_key "impressions", "users"
   add_foreign_key "impressions", "users"
   add_foreign_key "stations", "media"
 
