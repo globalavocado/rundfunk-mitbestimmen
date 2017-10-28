@@ -6,6 +6,7 @@ describe('Unit | Route | visualize/graph', function() {
   setupTest('route:visualize/graph', {
     needs: [
       'service:metrics',
+      'service:fastboot',
       'ember-metrics@metrics-adapter:piwik'
     ]
   });

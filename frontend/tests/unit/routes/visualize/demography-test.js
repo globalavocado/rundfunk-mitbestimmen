@@ -6,6 +6,7 @@ describe('Unit | Route | visualize/demography', function() {
   setupTest('route:visualize/demography', {
     needs: [
       'service:metrics',
+      'service:fastboot',
       'ember-metrics@metrics-adapter:piwik', // bundled adapter
     ]
   });

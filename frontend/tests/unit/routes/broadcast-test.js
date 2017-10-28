@@ -7,6 +7,7 @@ describe('Unit | Route | broadcast', function() {
      needs: [
       'service:metrics',
       'service:session',
+      'service:fastboot',
       'ember-metrics@metrics-adapter:piwik'
      ]
   });
