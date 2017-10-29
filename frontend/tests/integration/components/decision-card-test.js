@@ -34,7 +34,7 @@ describe("Integration | Component | decision card", function() {
           done();
         });
         this.render(
-          hbs`{{decision-card broadcast=broadcast login=loginAction}}`
+          hbs`{{decision-card broadcast=broadcast loginAction=loginAction}}`
         );
         this.$(".decision-card-support-button").click();
       });
